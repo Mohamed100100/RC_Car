@@ -118,7 +118,84 @@ Not now
 * **Protocol:** ASCII commands terminated with `\n`
 
 ---
+## 🔌 Wiring Diagram
+```
+                                    ATmega32 COMPLETE PIN MAPPING
+                                    ─────────────────────────────
 
+                                      ATmega32 (40-Pin DIP)
+                                ┌─────────────────────────────────┐
+                                │                                 │
+Ultrasonic TRIG  ◄─ (XCK/T0) PB0│1  ●                         ● 40│PA0 (ADC0)      → DC Motor Right 1
+                        (T1) PB1│2  ●                         ● 39│PA1 (ADC1)      → DC Motor Right 2
+                 (INT2/AIN0) PB2│3  ●                         ● 38│PA2 (ADC2)      → DC Motor left 1
+                  (OC0/AIN1) PB3│4  ●      ATmega32           ● 37│PA3 (ADC3)      → DC Motor left 2
+                        (SS) PB4│5  ●      40-PIN DIP         ● 36│PA4 (ADC4)      → IR sensor left
+                      (MOSI) PB5│6  ●                         ● 35│PA5 (ADC5)      → IR sensor center
+                      (MISO) PB6│7  ●                         ● 34│PA6 (ADC6)      → IR sensor right
+                       (SCK) PB7│8  ●                         ● 33│PA7 (ADC7)      
+              5V ◄─        RESET│9  ●                         ● 32│AREF           
+              5V ◄─          VCC│10 ●                         ● 31│GND            
+             GND ◄─          GND│11 ●                         ● 30│AVCC           
+                           XTAL2│12 ●                         ● 29│PC7 (TOSC2)    
+                           XTAL1│13 ●                         ● 28│PC6 (TOSC1)    
+   From ESP32 TX ◄─    (RXD) PD0│14 ●                         ● 27│PC5 (TDI)      
+                       (TXD) PD1│15 ●                         ● 26│PC4 (TDO)      
+ Ultrasonic ECHO ◄─   (INT0) PD2│16 ●                         ● 25│PC3 (TMS)     
+                      (INT1) PD3│17 ●                         ● 24│PC2 (TCK)      
+ Servo Motor PWM ◄─   (OC1B) PD4│18 ●                         ● 23│PC1 (SDA)     
+                      (OC1A) PD5│19 ●                         ● 22│PC0 (SCL)      
+                       (ICP) PD6│20 ●                         ● 21│PD7 (OC2)      
+                                │                                 │
+                                └─────────────────────────────────┘
+
+                         SERVO MOTOR CONNECTION
+                         ─────────────────────
+
+                    ┌──────────────────────────┐
+                    │   Servo Motor (SG90)     │
+                    ├──────────────────────────┤
+                    │                          │
+          Signal ◄──┤ (OC1B) PD4 PWM ATmega32  │ 
+          VCC   ◄───┤ 5V from Buck Converter   │
+          GND   ◄───┤ Common Ground            │
+                    └──────────────────────────┘
+
+                    ULTRASONIC SENSOR (HC-SR04)
+                    ──────────────────────────
+                    ┌──────────────────────────┐
+                    │      HC-SR04             │
+                    ├──────────────────────────┤
+                    │                          │
+          VCC   ◄───┤ 5V Power                 │
+          TRIG  ◄───┤ (XCK/T0) PB0 ATmega32    │
+          ECHO  ─►──┤ (INT0)   PD2 ATmega32    │
+          GND   ◄───┤ Common Ground            │
+                    └──────────────────────────┘
+
+                    IR SENSORS (Line Following)
+                    ──────────────────────────
+
+                    ┌────────────────────────────────────────┐
+                    │  IR1 (Left)   IR2 (Center)  IR3 (Right)│
+                    ├────────────────────────────────────────┤
+                    │                                        │
+          VCC   ◄───┤ 5V Power (all 3 sensors)               │
+          OUT   ─►──┤ PA6          ───────────┐              │
+          OUT   ─►──┤ PA5          ────────┐  │              │
+          OUT   ─►──┤ PA4          ─────┐  │  │              │
+          GND   ◄───┤ Common Ground     │  │  │              │
+                    └───────────────────┼──┼──┼──────────────┘
+                                        │  │  │
+                                        │  │  └─► ATmega32  (Right Sensor)
+                                        │  └────► ATmega32  (Center Sensor)
+                                        └───────► ATmega32  (Left Sensor)
+
+
+
+
+```
+---
 
 ## 👨‍💻 Author
 
