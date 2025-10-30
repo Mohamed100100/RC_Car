@@ -12,7 +12,7 @@
 
 **Developed by Eng. Gemy | ITI Intake 46**
 
-[Overview](#overview) • [System Architecture](#system-architecture) • [Features](#features) • [Hardware Setup](#hardware-setup) • [Software Setup](#software-setup) • [Demo](#demo) • [Documentation](#documentation)
+[Overview](#overview) • [System Architecture](#system-architecture) • [Features](#features) • [Hardware Setup](#hardware-setup) • [Demo](#demo) 
 
 </div>
 
