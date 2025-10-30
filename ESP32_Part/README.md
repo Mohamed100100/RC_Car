@@ -147,8 +147,27 @@ No additional installations are required beyond the **ESP32 Arduino core**.
 | **Blinking**   | Waiting for Bluetooth connection |
 | **Solid ON**   | Connected via Bluetooth          |
 ---
+## 🔌 Wiring Diagram
+```
+┌──────────────┐                    ┌──────────────────┐
+│   Android    │    Bluetooth SPP   │      ESP32       │
+│    Phone     │◄──────────────────►│  GPIO 2 (LED)    │
+│ (Flutter App)│      Commands      │                  │
+└──────────────┘                    └───────┬──────────┘
+                                            │
+                                      UART1 │ (Single UART)
+                                   GPIO 17 (TX1, Pin 30)
+                                       115200 baud
+                                            │
+                                            │
+                                    ┌───────▼──────────┐
+                                    │    ATmega32      │
+                                    │    40-PIN DIP    │
+                                    │                  │
+                                    │ PD0: RX (Pin 14) │◄── From ESP32 TX
+                                    └──────────────────┘
 
-
+```
 ## 👨‍💻 Author
 
 **Eng. Mohamad Gamal (Eng.Gemy)**\
