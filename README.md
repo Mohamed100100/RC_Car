@@ -373,6 +373,6 @@ Ultrasonic TRIG  ◄─ (XCK/T0) PB0│1  ●                         ● 40│P
 ## 🎥 Demo Video
 
 🎬 **Watch the full RC Car Test Video**
-👉 [🎥 Click Here to View Demo]([https://drive.google.com/file/d/YOUR_VIDEO_ID/view?usp=sharing](https://drive.google.com/file/d/1dzpqeiBklOJRkfBLmQ4qjrEBcE-cIxAf/view?usp=drive_link))
+👉 [🎥 Click Here to View Demo](https://drive.google.com/file/d/1dzpqeiBklOJRkfBLmQ4qjrEBcE-cIxAf/view?usp=drive_link)
 
 ---
