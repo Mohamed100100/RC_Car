@@ -12,8 +12,6 @@
 
 **Developed by Eng. Gemy | ITI Intake 46**
 
-[Overview](#overview) • [System Architecture](#system-architecture) • [Features](#features) • [Hardware Setup](#hardware-setup) • [Demo](#demo) 
-
 </div>
 
 ---
